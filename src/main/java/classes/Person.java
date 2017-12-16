@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.*;
 
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class Person {
     @javax.validation.constraints.Email(message = "Email is invalid")
     @Getter @Setter private String email;

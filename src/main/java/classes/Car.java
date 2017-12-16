@@ -5,6 +5,7 @@ import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class Car {
     public enum carType {Economy, Business, Lux}
 

@@ -28,8 +28,10 @@ public class AllTests {
 
     @Test
     public void testCar() {
-        Car car = new Car(null, "Infinity", "ЫВ3232ЫВ");
-
+        Car car = new Car();
+        car.setDriverCar(null);
+        car.setCarNumberplate("ЫВ3232ЫВ");
+        car.setCarName("Infinity");
         Set<ConstraintViolation<Car>> constraintViolations = validator.validate(car);
 
         Assert.assertEquals(1, constraintViolations.size() );
@@ -38,9 +40,11 @@ public class AllTests {
 
     @Test
     public void testDriver() {
-        Driver _driver = new Driver("Somebody Else", "0974553322", car);
-
-        Set<ConstraintViolation<Driver>> constraintViolations = validator.validate(_driver);
+        Driver driver = new Driver();
+        driver.setPhoneNumber("0974553322");
+        driver.setFullName("Somebody Else");
+        driver.setCar(car);
+        Set<ConstraintViolation<Driver>> constraintViolations = validator.validate(driver);
 
         Assert.assertEquals(1, constraintViolations.size() );
         Assert.assertEquals("Number is invalid", constraintViolations.iterator().next().getMessage());
@@ -48,7 +52,14 @@ public class AllTests {
 
     @Test
     public void testOrder() {
-        Order order = new Order(null, person, driver, 1, UUID.randomUUID(), 4, "empty");
+        Order order = new Order();
+        order.setComment("empty");
+        order.setDriver(driver);
+        order.setPerson(person);
+        order.setFeedbackMark(4);
+        order.setFinalPrice(1);
+        order.setOrderDate(null);
+        order.setOrderId(UUID.randomUUID());
 
         Set<ConstraintViolation<Order>> constraintViolations = validator.validate(order);
 
@@ -58,7 +69,10 @@ public class AllTests {
 
     @Test
     public void testPerson() {
-        Person person = new Person("sdsdasd.com", "Anthony Stupnitskiy", "+38067-455-23-11");
+        Person person = new Person();
+        person.setEmail("sdsdasd.com");
+        person.setFullName("Anthony Stupnitskiy");
+        person.setPhoneNumber("+38067-455-23-11");
 
         Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
 

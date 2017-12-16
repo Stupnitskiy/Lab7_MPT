@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.*;
 
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class Driver {
 
     @javax.validation.constraints.NotEmpty(message = "Enter your fullName")

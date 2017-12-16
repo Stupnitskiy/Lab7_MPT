@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.*;
 
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class Order {
     @NotNull(message = "Enter a date")
     @PastOrPresent(message = "Invalid date")
